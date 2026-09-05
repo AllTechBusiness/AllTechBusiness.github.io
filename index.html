@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AllTech | Conectando Pessoas ao Futuro da Tecnologia</title>
+<meta name="description" content="Portal institucional e de carreiras da AllTech - empresa de tecnologia e revenda de eletrônicos.">
+
+<!-- ================================================================
+     ESTILOS (CSS)
+================================================================= -->
+<style>
+  :root{
+    --azul-escuro: #0a192f;
+    --azul-escuro-2: #0d2340;
+    --azul-cyan: #00d2ff;
+    --azul-cyan-dark: #00a8cc;
+    --cinza-claro: #f8f9fa;
+    --cinza-medio: #b8c2cc;
+    --branco: #ffffff;
+    --sombra: rgba(0, 210, 255, 0.25);
+    --transicao: all 0.35s cubic-bezier(.25,.8,.25,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background:var(--cinza-claro);
+    color:var(--azul-escuro);
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  .container{
+    width:90%;
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  section{padding:100px 0;}
+
+  h1,h2,h3,h4{font-family:'Segoe UI', Arial, sans-serif;font-weight:700;}
+
+  .section-title{
+    text-align:center;
+    font-size:2.4rem;
+    color:var(--azul-escuro);
+    margin-bottom:15px;
+    position:relative;
+  }
+
+  .section-title span{color:var(--azul-cyan-dark);}
+
+  .section-subtitle{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 55px auto;
+    color:#5a6a7a;
+    font-size:1.05rem;
+  }
+
+  /* ============ BOTÕES ============ */
+  .btn{
+    display:inline-block;
+    padding:14px 34px;
+    border-radius:50px;
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:.5px;
+    cursor:pointer;
+    border:none;
+    transition:var(--transicao);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .btn-primary{
+    background:linear-gradient(135deg, var(--azul-cyan) 0%, var(--azul-cyan-dark) 100%);
+    color:var(--azul-escuro);
+    box-shadow:0 4px 15px var(--sombra);
+  }
+
+  .btn-primary:hover{
+    transform:scale(1.06);
+    box-shadow:0 8px 30px var(--sombra), 0 0 25px var(--azul-cyan);
+  }
+
+  .btn-primary:active{
+    animation:btn-press .25s ease;
+  }
+
+  .btn-outline{
+    background:transparent;
+    color:var(--azul-escuro);
+    border:2px solid var(--azul-escuro);
+  }
+
+  .btn-outline:hover{
+    background:var(--azul-escuro);
+    color:var(--branco);
+    transform:scale(1.05);
+  }
+
+  .btn-light{
+    background:var(--branco);
+    color:var(--azul-escuro);
+  }
+  .btn-light:hover{
+    transform:scale(1.06);
+    box-shadow:0 8px 25px rgba(255,255,255,0.35);
+  }
+
+  .btn-vaga{
+    background:linear-gradient(135deg, var(--azul-cyan) 0%, #007ea8 100%);
+    color:var(--branco);
+    font-size:1.05rem;
+    padding:16px 42px;
+    box-shadow:0 0 0 0 rgba(0,210,255,.6);
+    animation:pulse-glow 2.4s infinite;
+  }
+
+  .btn-vaga:hover{
+    transform:scale(1.07);
+  }
+
+  @keyframes pulse-glow{
+    0%{box-shadow:0 0 0 0 rgba(0,210,255,.55);}
+    70%{box-shadow:0 0 0 18px rgba(0,210,255,0);}
+    100%{box-shadow:0 0 0 0 rgba(0,210,255,0);}
+  }
+
+  @keyframes btn-press{
+    0%{transform:scale(1.06);}
+    40%{transform:scale(0.94) rotate(-1deg);}
+    60%{transform:scale(0.94) rotate(1deg);}
+    100%{transform:scale(1.06);}
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    position:fixed;
+    top:0;left:0;width:100%;
+    z-index:1000;
+    background:rgba(10,25,47,0.92);
+    backdrop-filter:blur(8px);
+    box-shadow:0 2px 15px rgba(0,0,0,0.25);
+    transition:var(--transicao);
+  }
+
+  .navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 0;
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.6rem;
+    font-weight:800;
+    color:var(--branco);
+    letter-spacing:1px;
+  }
+
+  .logo .logo-icon{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--branco);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+
+  .logo .logo-icon::before{
+    content:"AT";
+    font-size:0.85rem;
+    font-weight:900;
+    color:var(--azul-escuro);
+    letter-spacing:0;
+  }
+
+  .logo span{color:var(--azul-cyan);}
+
+  .nav-links{
+    display:flex;
+    gap:32px;
+    align-items:center;
+  }
+
+  .nav-links a{
+    color:var(--cinza-claro);
+    font-weight:600;
+    font-size:0.95rem;
+    position:relative;
+    padding:6px 2px;
+    transition:var(--transicao);
+  }
+
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    bottom:0;left:0;
+    width:0;height:2px;
+    background:var(--azul-cyan);
+    transition:var(--transicao);
+  }
+
+  .nav-links a:hover{color:var(--azul-cyan);}
+  .nav-links a:hover::after{width:100%;}
+
+  .nav-cta{
+    background:var(--azul-cyan);
+    color:var(--azul-escuro) !important;
+    padding:10px 22px;
+    border-radius:50px;
+    font-weight:700 !important;
+  }
+  .nav-cta:hover{
+    background:var(--branco);
+    transform:scale(1.05);
+    box-shadow:0 0 15px var(--sombra);
+  }
+  .nav-cta::after{display:none;}
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+    z-index:1100;
+  }
+  .menu-toggle span{
+    width:28px;height:3px;
+    background:var(--branco);
+    border-radius:2px;
+    transition:var(--transicao);
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    height:100vh;
+    min-height:600px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--branco);
+    /* PLACEHOLDER: Imagem de fundo temporária -->
+         Para trocar depois, substitua a URL abaixo pela imagem real da sede/tecnologia */
+    background-image:
+      linear-gradient(180deg, rgba(10,25,47,0.85) 0%, rgba(10,25,47,0.95) 100%),
+      url('https://placehold.co/1600x900/0a192f/00d2ff?text=INSERIR+IMAGEM+DE+FUNDO+HERO');
+    background-size:cover;
+    background-position:center;
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 20% 20%, rgba(0,210,255,0.15), transparent 40%),
+               radial-gradient(circle at 80% 80%, rgba(0,210,255,0.12), transparent 40%);
+    pointer-events:none;
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:820px;
+    padding:0 20px;
+    animation:fadeInUp 1.2s ease;
+  }
+
+  .hero-content .tag{
+    display:inline-block;
+    background:rgba(0,210,255,0.12);
+    border:1px solid var(--azul-cyan);
+    color:var(--azul-cyan);
+    padding:6px 18px;
+    border-radius:50px;
+    font-size:0.8rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:22px;
+  }
+
+  .hero-content h1{
+    font-size:3.2rem;
+    line-height:1.2;
+    margin-bottom:20px;
+    text-shadow:0 4px 25px rgba(0,0,0,0.4);
+  }
+
+  .hero-content h1 .destaque{
+    color:var(--azul-cyan);
+  }
+
+  .hero-content p{
+    font-size:1.15rem;
+    color:var(--cinza-medio);
+    margin-bottom:36px;
+    /* PLACEHOLDER: TEXTO SUBTÍTULO TEMPORÁRIO - substituir pela copy final */
+  }
+
+  .hero-btns{
+    display:flex;
+    gap:18px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .scroll-indicator{
+    position:absolute;
+    bottom:30px;left:50%;
+    transform:translateX(-50%);
+    color:var(--azul-cyan);
+    font-size:1.6rem;
+    animation:bounce 2s infinite;
+    z-index:2;
+  }
+
+  @keyframes bounce{
+    0%,100%{transform:translate(-50%,0);}
+    50%{transform:translate(-50%,10px);}
+  }
+
+  @keyframes fadeInUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ============ SCROLL REVEAL ============ */
+  .reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.active{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ============ QUEM SOMOS ============ */
+  .sobre{background:var(--branco);}
+
+  .sobre-intro{
+    text-align:center;
+    max-width:800px;
+    margin:0 auto 60px auto;
+    color:#495a6b;
+    font-size:1.05rem;
+  }
+
+  .cards-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-bottom:50px;
+  }
+
+  .card{
+    background:var(--cinza-claro);
+    border-radius:18px;
+    padding:40px 30px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(10,25,47,0.06);
+    transition:var(--transicao);
+    border:1px solid transparent;
+  }
+
+  .card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 40px rgba(0,210,255,0.18);
+    border-color:var(--azul-cyan);
+  }
+
+  .card-icon{
+    width:70px;height:70px;
+    margin:0 auto 22px auto;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-2));
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;
+    color:var(--azul-cyan);
+    transition:var(--transicao);
+  }
+
+  .card:hover .card-icon{
+    background:linear-gradient(135deg, var(--azul-cyan), var(--azul-cyan-dark));
+    color:var(--azul-escuro);
+    transform:rotate(360deg) scale(1.1);
+  }
+
+  .card h3{
+    margin-bottom:12px;
+    font-size:1.3rem;
+    color:var(--azul-escuro);
+  }
+
+  .card p{
+    color:#5a6a7a;
+    font-size:0.95rem;
+  }
+
+  .center-btn{
+    text-align:center;
+  }
+
+  /* ============ UC ALLTECH ============ */
+  .uc{
+    background:var(--azul-escuro);
+    color:var(--branco);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .uc::before{
+    content:'';
+    position:absolute;
+    top:-100px;right:-100px;
+    width:400px;height:400px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(0,210,255,0.15), transparent 70%);
+  }
+
+  .uc .section-title, .uc .section-title span{color:var(--branco);}
+  .uc .section-title span{color:var(--azul-cyan);}
+  .uc .section-subtitle{color:var(--cinza-medio);}
+
+  .trilhas-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-bottom:60px;
+    position:relative;
+    z-index:2;
+  }
+
+  .trilha-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,210,255,0.25);
+    border-radius:18px;
+    padding:35px 28px;
+    transition:var(--transicao);
+  }
+
+  .trilha-card:hover{
+    background:rgba(0,210,255,0.08);
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,210,255,0.2);
+  }
+
+  .trilha-card .num{
+    font-size:0.8rem;
+    color:var(--azul-cyan);
+    letter-spacing:2px;
+    margin-bottom:10px;
+    display:block;
+  }
+
+  .trilha-card h3{
+    font-size:1.35rem;
+    margin-bottom:12px;
+  }
+
+  .trilha-card p{
+    color:var(--cinza-medio);
+    font-size:0.92rem;
+  }
+
+  .beneficios-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+    position:relative;
+    z-index:2;
+  }
+
+  .beneficio-item{
+    background:rgba(255,255,255,0.05);
+    border-radius:14px;
+    padding:24px 16px;
+    text-align:center;
+    transition:var(--transicao);
+  }
+
+  .beneficio-item:hover{
+    background:rgba(0,210,255,0.1);
+    transform:translateY(-6px);
+  }
+
+  .beneficio-item .icon{
+    font-size:1.8rem;
+    margin-bottom:10px;
+    color:var(--azul-cyan);
+  }
+
+  .beneficio-item p{
+    font-size:0.88rem;
+    color:var(--cinza-claro);
+  }
+
+  /* ============ UNIDADES ============ */
+  .unidades{background:var(--cinza-claro);}
+
+  .unidades-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+  }
+
+  .unidade-card{
+    background:var(--branco);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(10,25,47,0.08);
+    transition:var(--transicao);
+    cursor:pointer;
+  }
+
+  .unidade-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,210,255,0.2);
+  }
+
+  .unidade-img{
+    height:150px;
+    background:linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-2));
+    display:flex;align-items:center;justify-content:center;
+    color:var(--azul-cyan);
+    font-size:2rem;
+    position:relative;
+  }
+
+  .unidade-img.sede{
+    background:linear-gradient(135deg, var(--azul-cyan-dark), var(--azul-escuro));
+  }
+
+  .unidade-tag{
+    position:absolute;
+    top:10px;left:10px;
+    background:var(--azul-cyan);
+    color:var(--azul-escuro);
+    font-size:0.7rem;
+    font-weight:700;
+    padding:4px 12px;
+    border-radius:50px;
+    letter-spacing:1px;
+  }
+
+  .unidade-info{
+    padding:22px 20px;
+  }
+
+  .unidade-info h3{
+    font-size:1.1rem;
+    margin-bottom:6px;
+    color:var(--azul-escuro);
+  }
+
+  .unidade-info p{
+    font-size:0.88rem;
+    color:#5a6a7a;
+  }
+
+  /* ============ CARREIRAS ============ */
+  .carreiras{
+    background:var(--branco);
+    position:relative;
+  }
+
+  .vaga-card{
+    max-width:850px;
+    margin:0 auto;
+    background:linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-escuro-2) 100%);
+    border-radius:22px;
+    padding:50px;
+    color:var(--branco);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+    box-shadow:0 20px 50px rgba(10,25,47,0.25);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .vaga-card::after{
+    content:'';
+    position:absolute;
+    bottom:-80px;left:-80px;
+    width:250px;height:250px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(0,210,255,0.18), transparent 70%);
+  }
+
+  .vaga-info{position:relative;z-index:2;}
+
+  .vaga-status{
+    display:inline-block;
+    background:rgba(0,210,255,0.15);
+    border:1px solid var(--azul-cyan);
+    color:var(--azul-cyan);
+    padding:5px 16px;
+    border-radius:50px;
+    font-size:0.75rem;
+    letter-spacing:1px;
+    margin-bottom:18px;
+    text-transform:uppercase;
+  }
+
+  .vaga-info h3{
+    font-size:1.8rem;
+    margin-bottom:16px;
+  }
+
+  .vaga-info ul{
+    margin-bottom:26px;
+  }
+
+  .vaga-info ul li{
+    padding:6px 0;
+    font-size:0.95rem;
+    color:var(--cinza-medio);
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .vaga-info ul li::before{
+    content:'▹';
+    color:var(--azul-cyan);
+    font-weight:700;
+  }
+
+  .vaga-visual{
+    position:relative;
+    z-index:2;
+    text-align:center;
+  }
+
+  .vaga-visual .badge-circle{
+    width:190px;height:190px;
+    border-radius:50%;
+    border:2px dashed rgba(0,210,255,0.5);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 20px auto;
+    font-size:3.5rem;
+    color:var(--azul-cyan);
+    animation:spin 18s linear infinite;
+  }
+
+  @keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+  }
+
+  /* ============ MODAIS ============ */
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(10,25,47,0.75);
+    backdrop-filter:blur(4px);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    animation:fadeIn 0.3s ease;
+  }
+
+  .modal-overlay.active{
+    display:flex;
+  }
+
+  @keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+  }
+
+  .modal-box{
+    background:var(--branco);
+    max-width:750px;
+    width:100%;
+    max-height:85vh;
+    overflow-y:auto;
+    border-radius:20px;
+    padding:45px;
+    position:relative;
+    animation:modalPop 0.35s cubic-bezier(.25,.8,.25,1);
+    box-shadow:0 30px 60px rgba(0,0,0,0.4);
+  }
+
+  @keyframes modalPop{
+    from{opacity:0; transform:scale(0.9) translateY(20px);}
+    to{opacity:1; transform:scale(1) translateY(0);}
+  }
+
+  .modal-close{
+    position:absolute;
+    top:20px;right:24px;
+    font-size:1.6rem;
+    color:var(--azul-escuro);
+    cursor:pointer;
+    background:var(--cinza-claro);
+    width:38px;height:38px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    transition:var(--transicao);
+    border:none;
+  }
+
+  .modal-close:hover{
+    background:var(--azul-cyan);
+    transform:rotate(90deg);
+  }
+
+  .modal-box h2{
+    color:var(--azul-escuro);
+    font-size:1.8rem;
+    margin-bottom:18px;
+    padding-right:30px;
+  }
+
+  .modal-box h4{
+    color:var(--azul-cyan-dark);
+    margin:22px 0 10px 0;
+    font-size:1.1rem;
+  }
+
+  .modal-box p, .modal-box li{
+    color:#495a6b;
+    font-size:0.97rem;
+    margin-bottom:8px;
+  }
+
+  .modal-box ul{padding-left:5px;}
+  .modal-box ul li{
+    list-style:none;
+    padding-left:22px;
+    position:relative;
+  }
+  .modal-box ul li::before{
+    content:'✓';
+    position:absolute;
+    left:0;
+    color:var(--azul-cyan-dark);
+    font-weight:700;
+  }
+
+  .aviso-dho{
+    background:rgba(0,210,255,0.08);
+    border:1px solid rgba(0,210,255,0.4);
+    border-left:4px solid var(--azul-cyan-dark);
+    border-radius:10px;
+    padding:18px 20px;
+    margin:24px 0;
+    font-size:0.9rem;
+    color:var(--azul-escuro);
+  }
+
+  .aviso-dho strong{color:var(--azul-cyan-dark);}
+
+  .modal-endereco{
+    background:var(--cinza-claro);
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:16px;
+  }
+  .modal-endereco h4{margin-top:0;}
+
+  .modal-cta{
+    text-align:center;
+    margin-top:28px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:#061224;
+    color:var(--cinza-medio);
+    padding:60px 0 25px 0;
+  }
+
+  .footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:40px;
+  }
+
+  .footer-col .logo{
+    margin-bottom:16px;
+  }
+
+  .footer-col p{
+    font-size:0.9rem;
+    color:#8a99a8;
+    margin-bottom:10px;
+  }
+
+  .footer-col h4{
+    color:var(--branco);
+    margin-bottom:18px;
+    font-size:1rem;
+  }
+
+  .footer-col ul li{
+    margin-bottom:10px;
+  }
+
+  .footer-col ul li a{
+    color:#8a99a8;
+    font-size:0.9rem;
+    transition:var(--transicao);
+  }
+
+  .footer-col ul li a:hover{
+    color:var(--azul-cyan);
+    padding-left:5px;
+  }
+
+  .social-links{
+    display:flex;
+    gap:14px;
+    margin-top:10px;
+  }
+
+  .social-links a{
+    width:38px;height:38px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.06);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--cinza-claro);
+    transition:var(--transicao);
+    font-size:0.9rem;
+  }
+
+  .social-links a:hover{
+    background:var(--azul-cyan);
+    color:var(--azul-escuro);
+    transform:translateY(-4px);
+  }
+
+  .footer-bottom{
+    text-align:center;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    font-size:0.85rem;
+    color:#6b7a89;
+  }
+
+  /* ============ RESPONSIVO ============ */
+  @media (max-width: 992px){
+    .cards-grid, .trilhas-grid{grid-template-columns:repeat(2,1fr);}
+    .beneficios-grid{grid-template-columns:repeat(2,1fr);}
+    .unidades-grid{grid-template-columns:repeat(2,1fr);}
+    .vaga-card{grid-template-columns:1fr;text-align:center;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  @media (max-width: 768px){
+    .nav-links{
+      position:fixed;
+      top:0;right:-100%;
+      width:70%;
+      max-width:320px;
+      height:100vh;
+      background:var(--azul-escuro);
+      flex-direction:column;
+      justify-content:center;
+      gap:28px;
+      transition:right 0.4s ease;
+      box-shadow:-10px 0 30px rgba(0,0,0,0.3);
+    }
+    .nav-links.active{right:0;}
+    .menu-toggle{display:flex;}
+    .hero-content h1{font-size:2.2rem;}
+    .cards-grid, .trilhas-grid, .beneficios-grid, .unidades-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    section{padding:70px 0;}
+    .modal-box{padding:30px 22px;}
+  }
+
+  @media (max-width: 480px){
+    .hero-content h1{font-size:1.7rem;}
+    .hero-btns{flex-direction:column;align-items:center;}
+    .vaga-card{padding:30px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     HEADER
+================================================================= -->
+<header>
+  <nav class="container navbar">
+    <a href="#inicio" class="logo">
+      <span class="logo-icon"></span>
+      ALL<span>TECH</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" class="nav-link-item">Início</a></li>
+      <li><a href="#sobre" class="nav-link-item">Sobre</a></li>
+      <li><a href="#uc" class="nav-link-item">UC AllTech</a></li>
+      <li><a href="#unidades" class="nav-link-item">Unidades</a></li>
+      <li><a href="#carreiras" class="nav-link-item">Carreiras</a></li>
+      <li><a href="#carreiras" class="nav-cta nav-link-item">Vagas Abertas</a></li>
+    </ul>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<!-- ================================================================
+     HERO SECTION
+================================================================= -->
+<section class="hero" id="inicio">
+  <!-- PLACEHOLDER: A imagem de fundo desta seção está definida via CSS (background-image na classe .hero).
+       Substitua a URL do placeholder pela imagem real da sede/tecnologia quando disponível. -->
+  <div class="hero-content">
+    <span class="tag">Tecnologia • Eletrônicos • Pessoas</span>
+    <h1>Conectando Pessoas ao <span class="destaque">Futuro da Tecnologia.</span></h1>
+    <!-- PLACEHOLDER: TEXTO SUBTÍTULO TEMPORÁRIO - substituir pela copy institucional final -->
+    <p>A AllTech une inovação, tecnologia de ponta e revenda especializada de eletrônicos para transformar a maneira como pessoas e empresas se conectam com o futuro.</p>
+    <div class="hero-btns">
+      <a href="#sobre" class="btn btn-primary">Conheça a AllTech</a>
+      <a href="#carreiras" class="btn btn-outline" style="color:#fff;border-color:#fff;">Vagas Abertas</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">⌄</div>
+</section>
+
+<!-- ================================================================
+     QUEM SOMOS
+================================================================= -->
+<section class="sobre" id="sobre">
+  <div class="container">
+    <h2 class="section-title reveal">Quem <span>Somos</span></h2>
+    <!-- PLACEHOLDER: TEXTO INSTITUCIONAL RESUMIDO - substituir pelo texto oficial da empresa -->
+    <p class="sobre-intro reveal">
+      A AllTech é uma empresa fictícia de tecnologia e revenda de eletrônicos, criada para oferecer soluções
+      inteligentes e um atendimento humano de excelência. Este é um texto de introdução temporário e pode
+      ser substituído pelo conteúdo institucional oficial da empresa.
+    </p>
+
+    <div class="cards-grid">
+      <div class="card reveal">
+        <div class="card-icon">🎯</div>
+        <h3>Missão</h3>
+        <!-- PLACEHOLDER: TEXTO DA MISSÃO -->
+        <p>Democratizar o acesso à tecnologia por meio de soluções acessíveis, confiáveis e de alta qualidade.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🔭</div>
+        <h3>Visão</h3>
+        <!-- PLACEHOLDER: TEXTO DA VISÃO -->
+        <p>Ser referência nacional em tecnologia e revenda de eletrônicos até 2030, reconhecida pela inovação.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">💎</div>
+        <h3>Valores</h3>
+        <!-- PLACEHOLDER: TEXTO DOS VALORES -->
+        <p>Ética, inovação, colaboração, foco no cliente e respeito às pessoas em todas as relações.</p>
+      </div>
+    </div>
+
+    <div class="center-btn reveal">
+      <button class="btn btn-outline" onclick="abrirModal('modalSobre')">Saiba Mais Sobre a AllTech</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     UC ALLTECH (UNIVERSIDADE CORPORATIVA)
+================================================================= -->
+<section class="uc" id="uc">
+  <div class="container">
+    <h2 class="section-title reveal">Universidade Corporativa <span>AllTech</span></h2>
+    <p class="section-subtitle reveal">
+      Investimos no desenvolvimento contínuo dos nossos colaboradores através de trilhas de aprendizagem
+      estruturadas e benefícios pensados para o crescimento de cada pessoa.
+    </p>
+
+    <div class="trilhas-grid">
+      <div class="trilha-card reveal">
+        <span class="num">TRILHA 01</span>
+        <h3>Trilha Admin</h3>
+        <!-- PLACEHOLDER: DESCRIÇÃO DA TRILHA ADMINISTRATIVA -->
+        <p>Capacitação em rotinas administrativas, gestão de processos e ferramentas corporativas essenciais.</p>
+      </div>
+      <div class="trilha-card reveal">
+        <span class="num">TRILHA 02</span>
+        <h3>Trilha Customer Success</h3>
+        <!-- PLACEHOLDER: DESCRIÇÃO DA TRILHA DE CS -->
+        <p>Desenvolvimento de habilidades em atendimento, relacionamento e retenção de clientes.</p>
+      </div>
+      <div class="trilha-card reveal">
+        <span class="num">TRILHA 03</span>
+        <h3>Trilha Tech</h3>
+        <!-- PLACEHOLDER: DESCRIÇÃO DA TRILHA TECH -->
+        <p>Formação técnica em tecnologia, suporte, infraestrutura e novas tendências do setor.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="text-align:center;margin-bottom:30px;font-size:1.4rem;">Benefícios Corporativos</h3>
+    <div class="beneficios-grid">
+      <div class="beneficio-item reveal">
+        <div class="icon">🏥</div>
+        <!-- PLACEHOLDER: LISTA DE BENEFÍCIOS - editar conforme política real da empresa -->
+        <p>Plano de Saúde</p>
+      </div>
+      <div class="beneficio-item reveal">
+        <div class="icon">🍽️</div>
+        <p>Vale Alimentação</p>
+      </div>
+      <div class="beneficio-item reveal">
+        <div class="icon">📚</div>
+        <p>Bolsa de Estudos</p>
+      </div>
+      <div class="beneficio-item reveal">
+        <div class="icon">🚌</div>
+        <p>Vale Transporte</p>
+      </div>
+    </div>
+
+    <div class="center-btn reveal" style="margin-top:50px;">
+      <button class="btn btn-primary" onclick="abrirModal('modalUC')">Conheça a UC AllTech</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     NOSSAS UNIDADES
+================================================================= -->
+<section class="unidades" id="unidades">
+  <div class="container">
+    <h2 class="section-title reveal">Nossas <span>Unidades</span></h2>
+    <p class="section-subtitle reveal">Presença estratégica em importantes polos econômicos do Brasil.</p>
+
+    <div class="unidades-grid">
+      <div class="unidade-card reveal" onclick="abrirModal('modalUnidades')">
+        <div class="unidade-img sede">
+          <span class="unidade-tag">SEDE</span>
+          🏢
+        </div>
+        <div class="unidade-info">
+          <h3>São Paulo</h3>
+          <!-- PLACEHOLDER: ENDEREÇO RESUMIDO DA SEDE -->
+          <p>Av. Paulista - SP</p>
+        </div>
+      </div>
+
+      <div class="unidade-card reveal" onclick="abrirModal('modalUnidades')">
+        <div class="unidade-img">🏬</div>
+        <div class="unidade-info">
+          <h3>Curitiba</h3>
+          <!-- PLACEHOLDER: ENDEREÇO RESUMIDO DA FILIAL -->
+          <p>Filial - PR</p>
+        </div>
+      </div>
+
+      <div class="unidade-card reveal" onclick="abrirModal('modalUnidades')">
+        <div class="unidade-img">🏬</div>
+        <div class="unidade-info">
+          <h3>Recife</h3>
+          <!-- PLACEHOLDER: ENDEREÇO RESUMIDO DA FILIAL -->
+          <p>Filial - PE</p>
+        </div>
+      </div>
+
+      <div class="unidade-card reveal" onclick="abrirModal('modalUnidades')">
+        <div class="unidade-img">🏬</div>
+        <div class="unidade-info">
+          <h3>Brasília</h3>
+          <!-- PLACEHOLDER: ENDEREÇO RESUMIDO DA FILIAL -->
+          <p>Filial - DF</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-btn reveal" style="margin-top:40px;">
+      <button class="btn btn-outline" onclick="abrirModal('modalUnidades')">Ver Todos os Endereços</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PORTAL DE CARREIRAS
+================================================================= -->
+<section class="carreiras" id="carreiras">
+  <div class="container">
+    <h2 class="section-title reveal">Portal de <span>Carreiras</span></h2>
+    <p class="section-subtitle reveal">Faça parte do time AllTech e construa sua carreira com a gente.</p>
+
+    <div class="vaga-card reveal">
+      <div class="vaga-info">
+        <span class="vaga-status">Vaga Aberta</span>
+        <!-- PLACEHOLDER: TÍTULO OFICIAL DA VAGA -->
+        <h3>Assistente Comercial e Administrativo</h3>
+        <ul>
+          <!-- PLACEHOLDER: RESUMO DE ATRIBUIÇÕES E REQUISITOS -->
+          <li>Atendimento e suporte administrativo ao setor comercial</li>
+          <li>Organização de documentos e processos internos</li>
+          <li>Ensino médio completo</li>
+          <li>Conhecimento em pacote Office</li>
+        </ul>
+        <button class="btn btn-vaga" onclick="abrirModal('modalVaga')">Ver Detalhes e Candidatar-se</button>
+      </div>
+      <div class="vaga-visual">
+        <div class="badge-circle">💼</div>
+        <p style="color:var(--cinza-medio);font-size:0.9rem;">Regime CLT • Presencial</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+================================================================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#inicio" class="logo">
+          <span class="logo-icon"></span>
+          ALL<span>TECH</span>
+        </a>
+        <p>Conectando pessoas ao futuro da tecnologia através de soluções inovadoras e um time apaixonado por resultados.</p>
+        <div class="social-links">
+          <!-- PLACEHOLDER: LINKS SOCIAIS FICTÍCIOS - substituir pelas URLs reais -->
+          <a href="#" target="_blank" title="LinkedIn">in</a>
+          <a href="#" target="_blank" title="Instagram">ig</a>
+          <a href="#" target="_blank" title="Facebook">fb</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#sobre">Quem Somos</a></li>
+          <li><a href="#uc">UC AllTech</a></li>
+          <li><a href="#unidades">Unidades</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Carreiras</h4>
+        <ul>
+          <li><a href="#carreiras">Vagas Abertas</a></li>
+          <li><a href="javascript:void(0)" onclick="abrirModal('modalVaga')">Portal de Recrutamento</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <!-- PLACEHOLDER: E-MAILS INSTITUCIONAIS FICTÍCIOS -->
+          <li><a href="mailto:contato@alltech.com.br">contato@alltech.com.br</a></li>
+          <li><a href="mailto:carreiras@alltech.com.br">carreiras@alltech.com.br</a></li>
+          <!-- PLACEHOLDER: ENDEREÇO COMPLETO DA SEDE -->
+          <li style="color:#8a99a8;">Av. Paulista, 0000 - São Paulo/SP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="anoAtual"></span> AllTech Tecnologia e Eletrônicos LTDA. Todos os direitos reservados. (Empresa fictícia)</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================================
+     MODAL: QUEM SOMOS (DETALHADO)
+================================================================= -->
+<div class="modal-overlay" id="modalSobre">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal('modalSobre')">&times;</button>
+    <h2>Quem Somos - AllTech</h2>
+    <!-- PLACEHOLDER: TEXTO INSTITUCIONAL COMPLETO -->
+    <p>
+      A AllTech nasceu com o propósito de aproximar pessoas e empresas das melhores soluções tecnológicas
+      do mercado. Este texto é um placeholder e deve ser substituído pelo conteúdo institucional oficial,
+      contendo a história, trajetória e diferenciais reais da empresa.
+    </p>
+    <h4>Nossa Missão</h4>
+    <p>Democratizar o acesso à tecnologia por meio de soluções acessíveis, confiáveis e de alta qualidade.</p>
+    <h4>Nossa Visão</h4>
+    <p>Ser referência nacional em tecnologia e revenda de eletrônicos, reconhecida pela inovação e excelência.</p>
+    <h4>Nossos Valores</h4>
+    <ul>
+      <li>Ética e transparência em todas as relações</li>
+      <li>Inovação constante</li>
+      <li>Foco no cliente</li>
+      <li>Respeito às pessoas</li>
+      <li>Colaboração e trabalho em equipe</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================================================================
+     MODAL: UC ALLTECH (DETALHADO)
+================================================================= -->
+<div class="modal-overlay" id="modalUC">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal('modalUC')">&times;</button>
+    <h2>Universidade Corporativa AllTech</h2>
+    <!-- PLACEHOLDER: TEXTO COMPLETO SOBRE A UC -->
+    <p>
+      A UC AllTech é o núcleo de desenvolvimento de pessoas da empresa, oferecendo trilhas de aprendizagem
+      estruturadas para impulsionar a carreira de cada colaborador. Substitua este texto pela descrição
+      oficial do programa.
+    </p>
+    <h4>Trilha Admin</h4>
+    <p>Foco em rotinas administrativas, gestão de processos, ferramentas corporativas e organização.</p>
+    <h4>Trilha Customer Success</h4>
+    <p>Desenvolvimento de habilidades de atendimento, relacionamento e fidelização de clientes.</p>
+    <h4>Trilha Tech</h4>
+    <p>Formação técnica contínua em suporte, infraestrutura, sistemas e novas tecnologias.</p>
+    <h4>Benefícios</h4>
+    <ul>
+      <!-- PLACEHOLDER: LISTA COMPLETA DE BENEFÍCIOS -->
+      <li>Plano de saúde e odontológico</li>
+      <li>Vale alimentação e refeição</li>
+      <li>Auxílio para bolsas de estudo</li>
+      <li>Vale transporte</li>
+      <li>Programa de bonificação por performance</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================================================================
+     MODAL: UNIDADES (ENDEREÇOS)
+================================================================= -->
+<div class="modal-overlay" id="modalUnidades">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal('modalUnidades')">&times;</button>
+    <h2>Nossas Unidades</h2>
+
+    <div class="modal-endereco">
+      <h4>🏢 Sede - São Paulo/SP</h4>
+      <!-- PLACEHOLDER: ENDEREÇO COMPLETO DA SEDE -->
+      <p>Av. Paulista, 0000 - Bela Vista, São Paulo - SP, CEP 00000-000</p>
+    </div>
+
+    <div class="modal-endereco">
+      <h4>🏬 Filial - Curitiba/PR</h4>
+      <!-- PLACEHOLDER: ENDEREÇO COMPLETO DA FILIAL DE CURITIBA -->
+      <p>Endereço completo a ser inserido - Curitiba, PR</p>
+    </div>
+
+    <div class="modal-endereco">
+      <h4>🏬 Filial - Recife/PE</h4>
+      <!-- PLACEHOLDER: ENDEREÇO COMPLETO DA FILIAL DE RECIFE -->
+      <p>Endereço completo a ser inserido - Recife, PE</p>
+    </div>
+
+    <div class="modal-endereco">
+      <h4>🏬 Filial - Brasília/DF</h4>
+      <!-- PLACEHOLDER: ENDEREÇO COMPLETO DA FILIAL DE BRASÍLIA -->
+      <p>Endereço completo a ser inserido - Brasília, DF</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     MODAL: DETALHES DA VAGA
+================================================================= -->
+<div class="modal-overlay" id="modalVaga">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal('modalVaga')">&times;</button>
+    <!-- PLACEHOLDER: TÍTULO OFICIAL DA VAGA -->
+    <h2>Assistente Comercial e Administrativo</h2>
+
+    <h4>Descrição da Vaga</h4>
+    <!-- PLACEHOLDER: DESCRIÇÃO COMPLETA DO CARGO -->
+    <p>
+      Buscamos um(a) profissional para atuar no suporte às rotinas comerciais e administrativas da unidade,
+      auxiliando na organização de processos, atendimento a clientes internos e externos e apoio à equipe
+      de vendas. Texto temporário, a ser substituído pela descrição oficial da vaga.
+    </p>
+
+    <h4>Principais Responsabilidades</h4>
+    <ul>
+      <!-- PLACEHOLDER: LISTA DE RESPONSABILIDADES -->
+      <li>Apoiar a equipe comercial em propostas e pedidos</li>
+      <li>Organizar e arquivar documentos administrativos</li>
+      <li>Realizar atendimento telefônico e por e-mail</li>
+      <li>Auxiliar no controle de estoque e faturamento</li>
+    </ul>
+
+    <h4>Requisitos</h4>
+    <ul>
+      <!-- PLACEHOLDER: LISTA DE REQUISITOS -->
+      <li>Ensino médio completo</li>
+      <li>Experiência prévia em rotinas administrativas (desejável)</li>
+      <li>Conhecimento em pacote Office (Word, Excel)</li>
+      <li>Boa comunicação e organização</li>
+    </ul>
+
+    <h4>Benefícios Oferecidos</h4>
+    <ul>
+      <!-- PLACEHOLDER: LISTA DE BENEFÍCIOS DA VAGA -->
+      <li>Vale transporte</li>
+      <li>Vale alimentação</li>
+      <li>Plano de saúde</li>
+      <li>Acesso à Universidade Corporativa AllTech</li>
+    </ul>
+
+    <div class="aviso-dho">
+      <strong>Aviso Importante:</strong> Todos os currículos recebidos por meio deste formulário passam por
+      <strong>Análise Humana</strong> realizada pela nossa equipe de Desenvolvimento Humano e Organizacional (DHO).
+      O processo seletivo é conduzido com atenção e cuidado, e o retorno pode levar alguns dias úteis.
+    </div>
+
+    <div class="modal-cta">
+      <!-- PLACEHOLDER: INSERIR LINK DO GOOGLE FORMS AQUI -->
+      <a href="#" target="_blank" class="btn btn-vaga">Acessar Formulário de Triagem</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     JAVASCRIPT
+================================================================= -->
+<script>
+  // Ano atual no rodapé
+  document.getElementById('anoAtual').textContent = new Date().getFullYear();
+
+  // ===== MENU MOBILE =====
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+
+  // Fecha o menu mobile ao clicar em um link
+  document.querySelectorAll('.nav-link-item').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // ===== SCROLL REVEAL (ANIMAÇÃO DE ENTRADA) =====
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    revealElements.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+      if (elementTop < windowHeight - 80) {
+        el.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+
+  // ===== MODAIS =====
+  function abrirModal(id) {
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Fecha o modal ao clicar fora da caixa de conteúdo
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  });
+
+  // Fecha o modal com a tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(overlay => {
+        overlay.classList.remove('active');
+      });
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // ===== HEADER: leve efeito ao rolar (opcional, sombra mais forte) =====
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.style.boxShadow = '0 4px 25px rgba(0,0,0,0.4)';
+    } else {
+      header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.25)';
+    }
+  });
+</script>
+
+</body>
+</html>
