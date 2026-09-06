@@ -2305,7 +2305,7 @@
         <ul>
           <li>Venha construir o futuro na AllTech</li>
           <li>Vagas em diversas áreas e unidades</li>
-          <li>Modelos CLT, Presencial e Remoto</li>
+          <li>Modelos CLT, Estágio, Presencial e Remoto</li>
           <li>Processo seletivo com Análise Humana da equipe de DHO</li>
         </ul>
         <button class="btn btn-vaga" onclick="abrirModal('modalListaVagas')">Ver Vagas Disponíveis</button>
@@ -2355,8 +2355,8 @@
         <h4>Contato</h4>
         <ul>
           <!-- PLACEHOLDER: E-MAILS INSTITUCIONAIS FICTÍCIOS -->
-          <li><a href="mailto:contato@alltech.com.br">contato@alltech.com.br</a></li>
-          <li><a href="mailto:carreiras@alltech.com.br">carreiras@alltech.com.br</a></li>
+          <li><a href="mailto:groupalltech@gmail.com">groupalltech@gmail.com</a></li>
+          <li><a href="mailto:alltechvagas@gmail.com">alltechvagas@gmail.com</a></li>
           <!-- PLACEHOLDER: ENDEREÇO COMPLETO DA SEDE -->
           <li style="color:var(--cinza-footer);">Av. Paulista, 0000 - São Paulo/SP</li>
         </ul>
@@ -2447,6 +2447,10 @@
       <li>São Paulo (Sede - Av. Paulista)</li>
       <li>Campinas</li>
       <li>Guarulhos</li>
+      <li>Guarujá</li>
+      <li>Bertioga</li>
+      <li>Ribeirão Preto</li>
+      <li>Serra Negra</li>
     </ul>
   </div>
 </div>
@@ -2465,6 +2469,9 @@
     <ul>
       <!-- PLACEHOLDER: LISTA REAL DE CIDADES COM UNIDADES ATIVAS NO PR -->
       <li>Curitiba (Filial)</li>
+      <li>Londrina</li>
+      <li>Foz do Iguaçu</li>
+      <li>Cascavel</li>
     </ul>
   </div>
 </div>
@@ -2483,6 +2490,9 @@
     <ul>
       <!-- PLACEHOLDER: LISTA REAL DE CIDADES COM UNIDADES ATIVAS EM PE -->
       <li>Recife (Filial)</li>
+      <li>Paulista</li>
+      <li>Olinda</li>
+      <li>Jaboatão dos Guararapes</li>
     </ul>
   </div>
 </div>
@@ -2501,6 +2511,8 @@
     <ul>
       <!-- PLACEHOLDER: LISTA REAL DE CIDADES COM UNIDADES ATIVAS NO DF -->
       <li>Brasília (Filial)</li>
+      <li>Samambaia</li>
+      <li>Taguatinga</li>
     </ul>
   </div>
 </div>
@@ -2517,21 +2529,21 @@
     <!-- Prazo geral de inscrições (o mesmo valor exibido no card da vaga ativa) -->
     <div class="prazo-lista-banner">
       <span class="prazo-icon">🕒</span>
-      <span id="countdownDeadlineLista">Inscrições até 11/09</span>
+      <span id="countdownDeadlineLista">Inscrição ativa</span>
     </div>
 
     <!-- PLACEHOLDER: LISTA REAL DE VAGAS - adicionar/remover itens e ajustar data-status="ativa" ou "inativa" conforme a vaga -->
     <div class="vaga-list-container" id="vagaListContainer">
       <div class="vaga-list-item status-ativa" data-status="ativa" onclick="abrirModal('modalVagaDetalhe1')" onkeydown="if(event.key==='Enter'||event.key===' '){abrirModal('modalVagaDetalhe1')}" role="button" tabindex="0">
         <div class="vaga-list-header">
-          <h4>Assistente Comercial e Administrativo</h4>
+          <h4>Estagiário Administrativo</h4>
           <div class="vaga-list-header-right">
             <span class="status-pill ativa">Ativa</span>
             <span class="seta">→</span>
           </div>
         </div>
         <div class="badges">
-          <span class="badge badge-clt">CLT</span>
+          <span class="badge badge-clt">ESTÁGIO</span>
           <span class="badge badge-presencial">Presencial</span>
         </div>
         <p class="vaga-list-resumo">Suporte às rotinas comerciais e administrativas da Sede em São Paulo.</p>
@@ -2541,7 +2553,7 @@
         <div class="vaga-list-header">
           <h4>Analista de Suporte Técnico</h4>
           <div class="vaga-list-header-right">
-            <span class="status-pill inativa">Desativada</span>
+            <span class="status-pill inativa">EM BREVE</span>
             <span class="seta">→</span>
           </div>
         </div>
@@ -2555,7 +2567,7 @@
       <!-- PLACEHOLDER: Exemplo de vaga desativada - ajuste conforme a disponibilidade real -->
       <div class="vaga-list-item status-inativa" data-status="inativa" onclick="abrirModal('modalVagaDetalhe3')" onkeydown="if(event.key==='Enter'||event.key===' '){abrirModal('modalVagaDetalhe3')}" role="button" tabindex="0">
         <div class="vaga-list-header">
-          <h4>Consultor(a) de Vendas</h4>
+          <h4>Consultor de Vendas</h4>
           <div class="vaga-list-header-right">
             <span class="status-pill inativa">Em breve</span>
             <span class="seta">→</span>
@@ -2579,10 +2591,10 @@
     <button class="modal-close" onclick="fecharModal('modalVagaDetalhe1')" aria-label="Fechar">&times;</button>
     <button class="voltar-lista" onclick="fecharModal('modalVagaDetalhe1')">← Voltar à lista de vagas</button>
     <!-- PLACEHOLDER: TÍTULO OFICIAL DA VAGA -->
-    <h2>Assistente Comercial e Administrativo</h2>
+    <h2>Estagiário Administrativo</h2>
     <span class="status-pill ativa" style="display:inline-block;margin-bottom:14px;">Ativa</span>
     <div class="badges" style="margin-bottom:14px;">
-      <span class="badge badge-clt">CLT</span>
+      <span class="badge badge-clt">ESTÁGIO</span>
       <span class="badge badge-presencial">Presencial</span>
     </div>
 
@@ -2648,7 +2660,7 @@
 
     <div class="modal-cta">
       <!-- PLACEHOLDER: INSERIR LINK DO GOOGLE FORMS AQUI -->
-      <a href="#" target="_blank" class="btn btn-vaga">Acessar Formulário de Triagem</a>
+      <a href="mailto:alltechvagas@gmail.com" target="_blank" class="btn btn-vaga">Inscrever-se</a>
     </div>
   </div>
 </div>
@@ -2662,7 +2674,7 @@
     <button class="voltar-lista" onclick="fecharModal('modalVagaDetalhe2')">← Voltar à lista de vagas</button>
     <!-- PLACEHOLDER: TÍTULO OFICIAL DA VAGA -->
     <h2>Analista de Suporte Técnico</h2>
-    <span class="status-pill inativa" style="display:inline-block;margin-bottom:14px;">Desativada</span>
+    <span class="status-pill inativa" style="display:inline-block;margin-bottom:14px;">EM BREVE</span>
     <div class="badges" style="margin-bottom:14px;">
       <span class="badge badge-clt">CLT</span>
       <span class="badge badge-presencial">Presencial</span>
@@ -2724,11 +2736,11 @@
     <button class="modal-close" onclick="fecharModal('modalVagaDetalhe3')" aria-label="Fechar">&times;</button>
     <button class="voltar-lista" onclick="fecharModal('modalVagaDetalhe3')">← Voltar à lista de vagas</button>
     <!-- PLACEHOLDER: TÍTULO OFICIAL DA VAGA -->
-    <h2>Consultor(a) de Vendas</h2>
+    <h2>Consultor de Vendas</h2>
     <span class="status-pill inativa" style="display:inline-block;margin-bottom:14px;">Em breve</span>
     <div class="badges" style="margin-bottom:14px;">
       <span class="badge badge-clt">CLT</span>
-      <span class="badge badge-remoto">Remoto</span>
+      <span class="badge badge-remoto">Home Office</span>
     </div>
 
     <h4>Descrição da Vaga</h4>
