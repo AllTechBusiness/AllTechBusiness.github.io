@@ -3165,12 +3165,8 @@
 
     function montarMailto(){
       const assunto = 'Candidatura - ' + NOME_VAGA;
-      const corpo =
-        'Olá, equipe AllTech!\n\n' +
-        'Tenho interesse na vaga de ' + NOME_VAGA + ' e gostaria de me candidatar.\n\n' +
-        'Segue meu contato e, se possível, currículo em anexo.';
 
-      const params = new URLSearchParams({ subject: assunto, body: corpo });
+      const params = new URLSearchParams({ subject: assunto });
       const query = params.toString().replace(/\+/g, '%20');
       return 'mailto:' + EMAIL_VAGAS + '?' + query;
     }
