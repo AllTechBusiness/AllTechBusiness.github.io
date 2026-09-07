@@ -1344,6 +1344,41 @@
     margin-top:28px;
   }
 
+  /* ===== Feedback e fallback do botão de inscrição via mailto: (vaga ativa) ===== */
+  .email-cta-feedback{
+    margin-top:14px;
+    font-size:0.88rem;
+    color:var(--cinza-medio);
+    min-height:1.2em;
+  }
+
+  .email-cta-feedback.erro{
+    color:#ff4757;
+  }
+
+  .email-copy-btn{
+    display:none;
+    margin:10px auto 0 auto;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.25);
+    color:var(--branco);
+    font-weight:600;
+    font-size:0.85rem;
+    padding:9px 18px;
+    border-radius:50px;
+    cursor:pointer;
+    transition:var(--transicao);
+  }
+
+  .email-copy-btn:hover{
+    background:var(--azul-cyan);
+    border-color:var(--azul-cyan);
+    color:var(--azul-escuro);
+  }
+
   /* ============ FOOTER ============ */
   footer{
     background:#061224;
@@ -2659,8 +2694,12 @@
     </div>
 
     <div class="modal-cta">
-      <!-- PLACEHOLDER: INSERIR LINK DO GOOGLE FORMS AQUI -->
-      <a href="mailto:alltechvagas@gmail.com" target="_blank" class="btn btn-vaga">Inscrever-se</a>
+      <!-- PLACEHOLDER: e-mail de destino das candidaturas (mailto:) -->
+      <button type="button" id="btnInscreverVaga1" class="btn btn-vaga">Inscrever-se</button>
+      <p class="email-cta-feedback" id="feedbackInscricao1" aria-live="polite"></p>
+      <button type="button" id="btnCopiarEmailVaga1" class="email-copy-btn">
+        📋 Copiar e-mail (alltechvagas@gmail.com)
+      </button>
     </div>
   </div>
 </div>
@@ -3107,6 +3146,78 @@
     atualizarContador();
     // Atualiza automaticamente a cada minuto, garantindo a virada exata à meia-noite do dia 11
     setInterval(atualizarContador, 60 * 1000);
+  })();
+
+  // ===== INSCRIÇÃO VIA MAILTO: (botão "Inscrever-se" da vaga ativa) =====
+  // Ao clicar, monta dinamicamente o link mailto: com assunto e corpo
+  // pré-preenchidos e abre o cliente de e-mail padrão do usuário.
+  // Caso o cliente de e-mail não abra em ~2s, exibe uma mensagem de fallback
+  // com um botão auxiliar para copiar o e-mail manualmente.
+  (function iniciarInscricaoMailto(){
+    const EMAIL_VAGAS = 'alltechvagas@gmail.com';
+    const NOME_VAGA = 'Estagiário Administrativo';
+
+    const btnInscrever = document.getElementById('btnInscreverVaga1');
+    const feedbackEl = document.getElementById('feedbackInscricao1');
+    const btnCopiar = document.getElementById('btnCopiarEmailVaga1');
+
+    if (!btnInscrever) return;
+
+    function montarMailto(){
+      const assunto = 'Candidatura - ' + NOME_VAGA;
+      const corpo =
+        'Olá, equipe AllTech!\n\n' +
+        'Tenho interesse na vaga de ' + NOME_VAGA + ' e gostaria de me candidatar.\n\n' +
+        'Segue meu contato e, se possível, currículo em anexo.';
+
+      const params = new URLSearchParams({ subject: assunto, body: corpo });
+      const query = params.toString().replace(/\+/g, '%20');
+      return 'mailto:' + EMAIL_VAGAS + '?' + query;
+    }
+
+    btnInscrever.addEventListener('click', () => {
+      if (feedbackEl) {
+        feedbackEl.classList.remove('erro');
+        feedbackEl.textContent = 'Abrindo seu aplicativo de e-mail...';
+      }
+      if (btnCopiar) btnCopiar.style.display = 'none';
+
+      window.location.href = montarMailto();
+
+      // Heurística de fallback: se a aba não perder o foco em ~2s,
+      // provavelmente não há cliente de e-mail configurado
+      let saiuDaAba = false;
+      const marcarSaida = () => { saiuDaAba = true; };
+      window.addEventListener('blur', marcarSaida, { once: true });
+
+      setTimeout(() => {
+        window.removeEventListener('blur', marcarSaida);
+        if (!saiuDaAba) {
+          if (feedbackEl) {
+            feedbackEl.textContent =
+              'Não conseguimos abrir seu aplicativo de e-mail automaticamente. ' +
+              'Você pode nos escrever diretamente para ' + EMAIL_VAGAS;
+          }
+          if (btnCopiar) btnCopiar.style.display = 'inline-flex';
+        } else if (feedbackEl) {
+          feedbackEl.textContent = 'Se o app não abriu, copie nosso e-mail abaixo.';
+          if (btnCopiar) btnCopiar.style.display = 'inline-flex';
+        }
+      }, 2000);
+    });
+
+    if (btnCopiar) {
+      btnCopiar.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(EMAIL_VAGAS);
+          const textoOriginal = btnCopiar.textContent;
+          btnCopiar.textContent = '✅ E-mail copiado!';
+          setTimeout(() => { btnCopiar.textContent = textoOriginal; }, 2000);
+        } catch (e) {
+          if (feedbackEl) feedbackEl.textContent = 'Copie manualmente: ' + EMAIL_VAGAS;
+        }
+      });
+    }
   })();
 </script>
 
