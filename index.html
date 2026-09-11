@@ -2564,14 +2564,14 @@
     <!-- Prazo geral de inscrições (o mesmo valor exibido no card da vaga ativa) -->
     <div class="prazo-lista-banner">
       <span class="prazo-icon">🕒</span>
-      <span id="countdownDeadlineLista">Inscrição ativa</span>
+      <span id="countdownDeadlineLista">Inscrições até segunda-feira, 23:59</span>
     </div>
 
     <!-- PLACEHOLDER: LISTA REAL DE VAGAS - adicionar/remover itens e ajustar data-status="ativa" ou "inativa" conforme a vaga -->
     <div class="vaga-list-container" id="vagaListContainer">
       <div class="vaga-list-item status-ativa" data-status="ativa" onclick="abrirModal('modalVagaDetalhe1')" onkeydown="if(event.key==='Enter'||event.key===' '){abrirModal('modalVagaDetalhe1')}" role="button" tabindex="0">
         <div class="vaga-list-header">
-          <h4>Estágio em Rotinas Comerciais e Atendimento</h4>
+          <h4>Estágio em Suporte Técnico e Operações</h4>
           <div class="vaga-list-header-right">
             <span class="status-pill ativa">Ativa</span>
             <span class="seta">→</span>
@@ -2581,7 +2581,7 @@
           <span class="badge badge-clt">ESTÁGIO</span>
           <span class="badge badge-presencial">Presencial</span>
         </div>
-        <p class="vaga-list-resumo">Apoio prático no atendimento aos clientes, organização de rotinas da loja e auxílio no controle e cadastro de mercadorias.</p>
+        <p class="vaga-list-resumo">Suporte técnico e operacional no atendimento a clientes e na gestão de produtos eletrônicos.</p>
       </div>
 
       <div class="vaga-list-item status-inativa" data-status="inativa" onclick="abrirModal('modalVagaDetalhe2')" onkeydown="if(event.key==='Enter'||event.key===' '){abrirModal('modalVagaDetalhe2')}" role="button" tabindex="0">
@@ -2626,7 +2626,7 @@
     <button class="modal-close" onclick="fecharModal('modalVagaDetalhe1')" aria-label="Fechar">&times;</button>
     <button class="voltar-lista" onclick="fecharModal('modalVagaDetalhe1')">← Voltar à lista de vagas</button>
     <!-- PLACEHOLDER: TÍTULO OFICIAL DA VAGA -->
-    <h2>Estágio em Rotinas Comerciais e Atendimento</h2>
+    <h2>Estágio em Suporte Técnico e Operações</h2>
     <span class="status-pill ativa" style="display:inline-block;margin-bottom:14px;">Ativa</span>
     <div class="badges" style="margin-bottom:14px;">
       <span class="badge badge-clt">ESTÁGIO</span>
@@ -2647,15 +2647,15 @@
       </div>
       <div class="countdown-mini-text">
         <span class="countdown-mini-title">Dias restantes para se candidatar</span>
-        <!-- PLACEHOLDER: Data-limite de inscrições (dia 11) - o texto é atualizado automaticamente via JS -->
-        <span class="countdown-deadline" id="countdownDeadline">Inscrições até 11/09</span>
+        <!-- PLACEHOLDER: Data-limite de inscrições (próxima segunda-feira, 23:59) - o texto é atualizado automaticamente via JS -->
+        <span class="countdown-deadline" id="countdownDeadline">Inscrições até segunda-feira, 23:59</span>
       </div>
     </div>
 
     <h4>Descrição da Vaga</h4>
     <!-- PLACEHOLDER: DESCRIÇÃO COMPLETA DO CARGO -->
     <p>
-      Vaga de Estágio em Operações e Atendimento, para nível Ensino Médio Técnico (tecnologia/administração).
+      Vaga de Estágio em Suporte Técnico e Operações, para nível Ensino Médio ou Técnico.
       Carga horária de 20 horas semanais (4h/dia, turno a combinar), com bolsa-auxílio de
       R$ 650,00/mês e auxílio-transporte de R$ 200,00/mês, totalizando R$ 850,00/mês.
     </p>
@@ -2663,8 +2663,8 @@
     <h4>Principais Responsabilidades</h4>
     <ul>
       <!-- PLACEHOLDER: LISTA DE RESPONSABILIDADES -->
-      <li>Atendimento inicial aos clientes da loja e suporte ao setor comercial</li>
-      <li>Auxílio no cadastro, organização e atualização de produtos no sistema</li>
+      <li>Atendimento inicial a clientes e suporte ao setor de vendas de eletrônicos</li>
+      <li>Auxílio no cadastro e atualização de produtos no sistema</li>
       <li>Suporte na organização, testes e conferência de equipamentos eletrônicos</li>
       <li>Apoio em rotinas administrativas do setor operacional</li>
     </ul>
@@ -2674,17 +2674,17 @@
       <!-- PLACEHOLDER: LISTA DE REQUISITOS -->
       <li>Cursando Ensino Médio, Técnico (Informática/Administração) ou 1º ano da faculdade</li>
       <li>Conhecimento básico em informática e pacote Office</li>
-      <li>Boa comunicação verbal, proatividade e organização</li>
-      <li>Facilidade para trabalhar em equipe e vontade de aprender</li>
+      <li>Boa comunicação e interesse por eletrônicos e tecnologia</li>
+      <li>Disponibilidade para o turno a combinar (4h diárias)</li>
     </ul>
 
     <h4>Benefícios Oferecidos</h4>
     <ul>
       <!-- PLACEHOLDER: LISTA DE BENEFÍCIOS DA VAGA -->
-      <li>Acesso gratuito aos cursos e capacitações da nossa Universidade Corporativa</li>
+      <li>Bolsa-auxílio</li>
       <li>Auxílio-transporte</li>
-      <li>Desconto exclusivo em produtos e eletrônicos da loja</li>
-      <li>Plano de desenvolvimento com possibilidade de efetivação</li>
+      <li>Desconto em eletrônicos da empresa</li>
+      <li>Oportunidade de aprendizado e efetivação</li>
     </ul>
 
     <div class="aviso-dho">
@@ -3096,11 +3096,11 @@
   });
 
   // ===== INDICADOR CIRCULAR DE PRAZO (ESTILO LED) =====
-  // PLACEHOLDER: Ajuste aqui o mês/ano do prazo-limite, caso necessário.
-  // A lógica calcula automaticamente a próxima ocorrência do dia 11, encerrando
-  // apenas à meia-noite que finaliza esse dia (ou seja, o cronômetro fica ativo
-  // durante todo o dia 11, virando "Encerrado"/próximo mês só na virada para o dia 12),
-  // e acende o LED na cor correspondente à urgência:
+  // PLACEHOLDER: Prazo extra concedido - o cronômetro agora expira sempre na
+  // próxima segunda-feira, às 23:59:59 (calculado dinamicamente a cada verificação).
+  // Caso hoje já seja segunda-feira, o prazo considerado é o fim do próprio dia
+  // (23:59:59 de hoje), e não da segunda-feira seguinte.
+  // Acende o LED na cor correspondente à urgência:
   //   Verde   -> 5 dias ou mais para o prazo
   //   Laranja -> entre 3 e 4 dias para o prazo
   //   Vermelho -> 2 dias ou menos para o prazo
@@ -3114,29 +3114,35 @@
 
     if (!ringEl && !deadlineListaEl) return;
 
+    // Calcula a próxima segunda-feira (ou o próprio dia, se hoje já for segunda-feira)
+    // e retorna a data com o horário ajustado para 23:59:59.999
+    function proximaSegundaFeira(base){
+      const resultado = new Date(base.getFullYear(), base.getMonth(), base.getDate());
+      const diaSemana = resultado.getDay(); // 0 = domingo, 1 = segunda-feira, ... 6 = sábado
+      const diasAteSegunda = (1 - diaSemana + 7) % 7; // 0 se hoje já for segunda-feira
+      resultado.setDate(resultado.getDate() + diasAteSegunda);
+      resultado.setHours(23, 59, 59, 999);
+      return resultado;
+    }
+
     function atualizarContador(){
       const agora = new Date(); // hora atual real, usada para uma contagem precisa
 
-      // Define o prazo-limite: fim do dia 11 (ou seja, a virada da meia-noite
-      // que encerra o dia 11 e inicia o dia 12) do mês atual, ou do próximo
-      // mês caso o dia 11 já tenha passado por completo. Assim, o cronômetro
-      // permanece ativo durante todo o dia 11, encerrando só à meia-noite
-      // seguinte - e não já na meia-noite que apenas inicia o dia 11.
-      let prazoExibicao = new Date(agora.getFullYear(), agora.getMonth(), 11);
-      let prazoCorte = new Date(agora.getFullYear(), agora.getMonth(), 12, 0, 0, 0, 0);
-      if (agora >= prazoCorte) {
-        prazoExibicao = new Date(agora.getFullYear(), agora.getMonth() + 1, 11);
-        prazoCorte = new Date(agora.getFullYear(), agora.getMonth() + 1, 12, 0, 0, 0, 0);
-      }
+      // Prazo estendido: encerra sempre na próxima segunda-feira, às 23:59:59
+      const prazoCorte = proximaSegundaFeira(agora);
+      const prazoEncerrado = agora >= prazoCorte;
 
       const msPorDia = 1000 * 60 * 60 * 24;
       const diasRestantes = Math.max(0, Math.ceil((prazoCorte - agora) / msPorDia));
-      const prazoFormatado = String(prazoExibicao.getDate()).padStart(2,'0') + '/' + String(prazoExibicao.getMonth()+1).padStart(2,'0');
+      const prazoFormatado = String(prazoCorte.getDate()).padStart(2,'0') + '/' + String(prazoCorte.getMonth()+1).padStart(2,'0');
+      const textoPrazo = 'Inscrições até segunda-feira, ' + prazoFormatado + ' às 23:59';
 
       // Acende o LED na cor correspondente à urgência do prazo
       if (ringEl) {
         ringEl.classList.remove('led-verde', 'led-laranja', 'led-vermelho');
-        if (diasRestantes >= 5) {
+        if (prazoEncerrado) {
+          ringEl.classList.add('led-vermelho');
+        } else if (diasRestantes >= 5) {
           ringEl.classList.add('led-verde');
         } else if (diasRestantes >= 3) {
           ringEl.classList.add('led-laranja');
@@ -3145,13 +3151,13 @@
         }
       }
 
-      if (daysEl) daysEl.textContent = diasRestantes;
-      if (deadlineEl) deadlineEl.textContent = 'Inscrições até ' + prazoFormatado;
-      if (deadlineListaEl) deadlineListaEl.textContent = 'Inscrições até ' + prazoFormatado;
+      if (daysEl) daysEl.textContent = prazoEncerrado ? '0' : diasRestantes;
+      if (deadlineEl) deadlineEl.textContent = prazoEncerrado ? 'Encerrado' : textoPrazo;
+      if (deadlineListaEl) deadlineListaEl.textContent = prazoEncerrado ? 'Encerrado' : textoPrazo;
     }
 
     atualizarContador();
-    // Atualiza automaticamente a cada minuto, garantindo a virada exata à meia-noite do dia 11
+    // Verifica a cada minuto, garantindo a virada exata para "Encerrado" às 23:59:59 de segunda-feira
     setInterval(atualizarContador, 60 * 1000);
   })();
 
@@ -3162,7 +3168,7 @@
   // com um botão auxiliar para copiar o e-mail manualmente.
   (function iniciarInscricaoMailto(){
     const EMAIL_VAGAS = 'alltechvagas@gmail.com';
-    const NOME_VAGA = 'Estágio em Suporte Técnico e Operações';
+    const NOME_VAGA = 'Estágio em Operações e Atendimento';
 
     const btnInscrever = document.getElementById('btnInscreverVaga1');
     const feedbackEl = document.getElementById('feedbackInscricao1');
