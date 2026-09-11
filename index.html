@@ -3097,7 +3097,9 @@
 
   // ===== INDICADOR CIRCULAR DE PRAZO (ESTILO LED) =====
   // PLACEHOLDER: Ajuste aqui o mês/ano do prazo-limite, caso necessário.
-  // A lógica calcula automaticamente a próxima ocorrência do dia 11, à meia-noite,
+  // A lógica calcula automaticamente a próxima ocorrência do dia 11, encerrando
+  // apenas à meia-noite que finaliza esse dia (ou seja, o cronômetro fica ativo
+  // durante todo o dia 11, virando "Encerrado"/próximo mês só na virada para o dia 12),
   // e acende o LED na cor correspondente à urgência:
   //   Verde   -> 5 dias ou mais para o prazo
   //   Laranja -> entre 3 e 4 dias para o prazo
@@ -3115,16 +3117,21 @@
     function atualizarContador(){
       const agora = new Date(); // hora atual real, usada para uma contagem precisa
 
-      // Define o prazo-limite: dia 11 à meia-noite (00:00) do mês atual,
-      // ou do próximo mês caso o dia 11 já tenha passado
-      let prazo = new Date(agora.getFullYear(), agora.getMonth(), 11, 0, 0, 0, 0);
-      if (agora >= prazo) {
-        prazo = new Date(agora.getFullYear(), agora.getMonth() + 1, 11, 0, 0, 0, 0);
+      // Define o prazo-limite: fim do dia 11 (ou seja, a virada da meia-noite
+      // que encerra o dia 11 e inicia o dia 12) do mês atual, ou do próximo
+      // mês caso o dia 11 já tenha passado por completo. Assim, o cronômetro
+      // permanece ativo durante todo o dia 11, encerrando só à meia-noite
+      // seguinte - e não já na meia-noite que apenas inicia o dia 11.
+      let prazoExibicao = new Date(agora.getFullYear(), agora.getMonth(), 11);
+      let prazoCorte = new Date(agora.getFullYear(), agora.getMonth(), 12, 0, 0, 0, 0);
+      if (agora >= prazoCorte) {
+        prazoExibicao = new Date(agora.getFullYear(), agora.getMonth() + 1, 11);
+        prazoCorte = new Date(agora.getFullYear(), agora.getMonth() + 1, 12, 0, 0, 0, 0);
       }
 
       const msPorDia = 1000 * 60 * 60 * 24;
-      const diasRestantes = Math.max(0, Math.ceil((prazo - agora) / msPorDia));
-      const prazoFormatado = String(prazo.getDate()).padStart(2,'0') + '/' + String(prazo.getMonth()+1).padStart(2,'0');
+      const diasRestantes = Math.max(0, Math.ceil((prazoCorte - agora) / msPorDia));
+      const prazoFormatado = String(prazoExibicao.getDate()).padStart(2,'0') + '/' + String(prazoExibicao.getMonth()+1).padStart(2,'0');
 
       // Acende o LED na cor correspondente à urgência do prazo
       if (ringEl) {
